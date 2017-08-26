@@ -1,0 +1,15 @@
+{
+    "name": "maksimkurb/docker-sabre-webdav",
+    "description": "WebDAV server based on sabre/dav",
+    "type": "project",
+    "require": {
+        "sabre/dav": "^3.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Kurbatov",
+            "email": "maksimkurb@gmail.com"
+        }
+    ]
+}
