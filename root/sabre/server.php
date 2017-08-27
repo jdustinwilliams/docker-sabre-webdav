@@ -21,9 +21,8 @@ $lockBackend = new DAV\Locks\Backend\File('/locks');
 $lockPlugin = new DAV\Locks\Plugin($lockBackend);
 $server->addPlugin($lockPlugin);
 
-// This ensures that we get a pretty index in the browser, but it is
-// optional.
 $server->addPlugin(new DAV\Browser\Plugin());
+$server->addPlugin(new DAV\Mount\Plugin());
 
 // All we need to do now, is to fire up the server
 $server->exec();

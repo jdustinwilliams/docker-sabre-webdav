@@ -15,4 +15,4 @@ Volumes:
 
 Run this container:
 
-    docker run --name=webdav -d -e UID=1002 -e GID=1002 -v ./webdav:/webdav -p 8080:8080 maksimkurb/sabre-webdav
+    docker run --name=webdav -d -e UID=1001 -e GID=1001 -v ./webdav:/webdav -p 8080:8080 maksimkurb/sabre-webdav
