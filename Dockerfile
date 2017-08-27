@@ -1,7 +1,6 @@
 FROM alpine:3.6
 
-ENV PORT=8080 \
-    UID=911 \
+ENV UID=911 \
     GID=911
 
     # Install required packages
