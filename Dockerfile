@@ -52,4 +52,6 @@ RUN mkdir -p /locks /webdav /var/log /run/apache2 \
 
 VOLUME ["/webdav", "/locks"]
 
+EXPOSE 80
+
 CMD /sabre/run.sh
