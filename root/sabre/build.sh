@@ -2,26 +2,13 @@
 
 cd /sabre
 
-EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
-
-if [ "${EXPECTED_SIGNATURE}" != "${ACTUAL_SIGNATURE}" ]
-then
-    >&2 echo 'ERROR: Invalid installer signature'
-    rm composer-setup.php
-    exit 1
-fi
-
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
-RESULT=$?
-rm composer-setup.php
+php -r "unlink('composer-setup.php');"
 
-if [ "${RESULT}" -eq "0" ]; then
-  php composer.phar install --no-plugins --no-scripts --no-progress -o
-  RESULT=$?
-fi
+mv composer.phar /usr/local/bin/composer
 
-rm ./build.sh ./composer.phar
+rm ./build.sh
 
 exit ${RESULT}

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  webdav:
+    build: .
+    environment:
+      - UID=10002
+      - GID=10002
+    volumes:
+      - ./data:/webdav
+    ports:
+      - "8888:80"
+
